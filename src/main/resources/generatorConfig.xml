@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<db type="oceanbase" configURL="http://obconsole.test.alibaba-inc.com/ob-config/config.co?dataId=daily_052" />
+	<db type="oceanbase" configURL="http://obconsole.test.xxx.com/ob-config/config.co?dataId=daily_XXX" />
 	<javaModel targetPackage="com.carpela.test" targetDir="output" template="template/beanTemplate.java"/>
 	<sqlMap targetPackage="com.carpela.test" targetDir="output" template="template/mybatisTemplate.xml"/>
 	<javaDAO targetPackage="com.carpela.test" targetDir="output" template="template/daoTemplate.java"/>
