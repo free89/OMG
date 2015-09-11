@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<db type="oceanbase" configURL="http://obconsole.test.alibaba-inc.com/ob-config/config.co?dataId=daily_052" />
+	<javaModel targetPackage="com.carpela.test" targetDir="output" template="template/beanTemplate.java"/>
+	<sqlMap targetPackage="com.carpela.test" targetDir="output" template="template/mybatisTemplate.xml"/>
+	<javaDAO targetPackage="com.carpela.test" targetDir="output" template="template/daoTemplate.java"/>
+	<javaMapper targetPackage="com.carpela.test" targetDir="output" template="template/mapperTemplate.java"/>
+	<table name="verify_transfer" objectName="VerifyTransfer" />
+	<table name="verify_transfer_environment" objectName="VerifyTransferEnvrionment"/>
+</configuration>

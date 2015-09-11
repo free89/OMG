@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.carpela.test.VerifyTransferEnvrionmentDAO">
+	<resultMap id="BaseResultMap" type="com.carpela.test.VerifyTransferEnvrionment">
+		<result property="gmtModified" 
+				column="gmt_modified"
+				jdbcType="TIMESTAMP"
+			/>
+		<result property="umid" 
+				column="umid"
+				jdbcType="VARCHAR"
+			/>
+		<result property="ip" 
+				column="ip"
+				jdbcType="VARCHAR"
+			/>
+		<result property="id" 
+				column="id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="sessionId" 
+				column="session_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="gmtCreate" 
+				column="gmt_create"
+				jdbcType="TIMESTAMP"
+			/>
+	</resultMap>
+	<sql id="dynamic">
+		<trim prefix="where" prefixOverrides="and">
+		<if test="gmtModified != null">
+			and gmt_modified = #{gmtModified}
+		</if>
+		<if test="umid != null">
+			and umid = #{umid}
+		</if>
+		<if test="ip != null">
+			and ip = #{ip}
+		</if>
+		<if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="sessionId != null">
+			and session_id = #{sessionId}
+		</if>
+		<if test="gmtCreate != null">
+			and gmt_create = #{gmtCreate}
+		</if>
+		</trim>
+	</sql>
+	<sql id="updateDynamic">
+		<trim prefix="set" prefixOverrides=",">
+		<if test="gmtModified != null">
+			,gmt_modified=CURRENT_TIMESTAMP()
+		</if>
+		<if test="umid != null">
+			,umid=#{umid}
+		</if>
+		<if test="ip != null">
+			,ip=#{ip}
+		</if>
+		<if test="id != null">
+			,id=#{id}
+		</if>
+		<if test="sessionId != null">
+			,session_id=#{sessionId}
+		</if>
+		<if test="gmtCreate != null">
+			,gmt_create=#{gmtCreate}
+		</if>
+		</trim>
+	</sql>
+	<select id="select" parameterType="com.carpela.test.VerifyTransferEnvrionment" resultMap="BaseResultMap">
+		select * from verify_transfer_environment
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</select>
+	<insert id="insert" parameterType="com.carpela.test.VerifyTransferEnvrionment">
+		insert into verify_transfer_environment (gmt_modified,umid,ip,id,session_id,gmt_create) 
+		values (
+			#{gmtModified},
+			#{umid},
+			#{ip},
+			#{id},
+			#{sessionId},
+			CURRENT_TIMESTAMP()
+		)
+	</insert>
+	<update id="update" parameterType="com.carpela.test.VerifyTransferEnvrionment">
+		update verify_transfer_environment set
+				gmt_modified=CURRENT_TIMESTAMP(),
+				umid=#{umid},
+				ip=#{ip},
+				id=#{id},
+				session_id=#{sessionId},
+				gmt_create=#{gmtCreate}
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</update>
+	<delete id="delete" parameterType="com.carpela.test.VerifyTransferEnvrionment">
+		delete from verify_transfer_environment
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</delete>
+	<update id="updateById" parameterType="com.carpela.test.VerifyTransferEnvrionment">
+		update verify_transfer_environment 
+			<include refid="updateDynamic"/>
+		where
+			id=#{id}
+	</update>
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from verify_transfer_environment
+		where id=#{id}
+	</delete>
+</mapper>

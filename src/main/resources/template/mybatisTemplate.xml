@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${namespace}.${daoname}">
+	<resultMap id="BaseResultMap" type="${parameterType}">
+		<#list fields?keys as mKey>
+		<result property="${mKey}" <#assign item = fields[mKey]>
+			<#list item as tmp>
+			<#if tmp_has_next> 
+				column="${tmp}"
+			<#else> 
+				jdbcType="${tmp}"
+			</#if>
+			</#list>
+			/>
+			</#list>
+	</resultMap>
+	<sql id="dynamic">
+		<trim prefix="where" prefixOverrides="and">
+		<#list fields?keys as mKey>
+		<if test="${mKey} != null">
+			and <#assign item = fields[mKey]><#list item as tmp><#if tmp_has_next>${tmp}</#if></#list> = <#noparse>#{</#noparse>${mKey}}
+		</if>
+		</#list>
+		</trim>
+	</sql>
+	<sql id="updateDynamic">
+		<trim prefix="set" prefixOverrides=",">
+		<#list fields?keys as mKey>
+		<if test="${mKey} != null">
+		<#assign item = fields[mKey]>
+		<#list item as tmp>
+		<#if tmp_has_next>
+			,<#if mKey == "gmtModified">${tmp}=CURRENT_TIMESTAMP()<#else>${tmp}=<#noparse>#{</#noparse>${mKey}}</#if>
+		</#if>
+		</#list>
+		</if>
+		</#list>
+		</trim>
+	</sql>
+	<select id="select" parameterType="${parameterType}" resultMap="BaseResultMap">
+		select * from ${tablename}
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</select>
+	<insert id="insert" parameterType="${parameterType}">
+		insert into ${tablename} (<#list fields?keys as mKey><#assign item = fields[mKey]><#list item as tmp><#if tmp_has_next>${tmp}</#if></#list><#if mKey_has_next>,</#if></#list>) 
+		values (
+		<#list fields?keys as mKey>
+			<#if mKey == "gmtCreate">CURRENT_TIMESTAMP()<#else><#noparse>#{</#noparse>${mKey}}</#if><#if mKey_has_next>,</#if>
+		</#list>
+		)
+	</insert>
+	<update id="update" parameterType="${parameterType}">
+		update ${tablename} set
+			<#list fields?keys as mKey>
+			<#assign item = fields[mKey]>
+			<#list item as tmp>
+			<#if tmp_has_next>
+				<#if mKey == "gmtModified">${tmp}=CURRENT_TIMESTAMP()<#else>${tmp}=<#noparse>#{</#noparse>${mKey}}</#if><#if mKey_has_next>,</#if>
+			</#if>
+			</#list>
+			</#list>
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</update>
+	<delete id="delete" parameterType="${parameterType}">
+		delete from ${tablename}
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</delete>
+	<update id="updateById" parameterType="${parameterType}">
+		update ${tablename} 
+			<include refid="updateDynamic"/>
+		where
+			id=<#noparse>#{</#noparse>id}
+	</update>
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from ${tablename}
+		where id=<#noparse>#{</#noparse>id}
+	</delete>
+</mapper>

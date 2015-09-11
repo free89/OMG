@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.carpela.test.VerifyTransferDAO">
+	<resultMap id="BaseResultMap" type="com.carpela.test.VerifyTransfer">
+		<result property="reason" 
+				column="reason"
+				jdbcType="VARCHAR"
+			/>
+		<result property="verifyUserNick" 
+				column="verify_user_nick"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromProfilePicture" 
+				column="from_profile_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toHalfBodyPicture" 
+				column="to_half_body_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toShopName" 
+				column="to_shop_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="source" 
+				column="source"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromAccountNick" 
+				column="from_account_nick"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromContactPersonName" 
+				column="from_contact_person_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="relation" 
+				column="relation"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromFullBodyPicture" 
+				column="from_full_body_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromHalfBodyPicture" 
+				column="from_half_body_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toName" 
+				column="to_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromName" 
+				column="from_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromLicensePicture" 
+				column="from_license_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toIdcardFrontPicture" 
+				column="to_idcard_front_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toIdcardBackPicture" 
+				column="to_idcard_back_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="id" 
+				column="id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="state" 
+				column="state"
+				jdbcType="BIGINT"
+			/>
+		<result property="toIdcard" 
+				column="to_idcard"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toContactMobilePhone" 
+				column="to_contact_mobile_phone"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromIdcardFrontPicture" 
+				column="from_idcard_front_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromCompanyName" 
+				column="from_company_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toContactEmail" 
+				column="to_contact_email"
+				jdbcType="VARCHAR"
+			/>
+		<result property="gmtVerify" 
+				column="gmt_verify"
+				jdbcType="TIMESTAMP"
+			/>
+		<result property="toContactPersonName" 
+				column="to_contact_person_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromShopName" 
+				column="from_shop_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromAlipayAccountId" 
+				column="from_alipay_account_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="status" 
+				column="status"
+				jdbcType="BIGINT"
+			/>
+		<result property="gmtModified" 
+				column="gmt_modified"
+				jdbcType="TIMESTAMP"
+			/>
+		<result property="toHavanaId" 
+				column="to_havana_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toLicenseNumber" 
+				column="to_license_number"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromHavanaId" 
+				column="from_havana_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromAccountType" 
+				column="from_account_type"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromIdcard" 
+				column="from_idcard"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toCompanyName" 
+				column="to_company_name"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromAccountId" 
+				column="from_account_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromIdcardBackPicture" 
+				column="from_idcard_back_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toProfilePicture" 
+				column="to_profile_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toAccountNick" 
+				column="to_account_nick"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toAlipayAccountId" 
+				column="to_alipay_account_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toAccountType" 
+				column="to_account_type"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromLicenseNumber" 
+				column="from_license_number"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toAccountId" 
+				column="to_account_id"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromContactEmail" 
+				column="from_contact_email"
+				jdbcType="VARCHAR"
+			/>
+		<result property="gmtCreate" 
+				column="gmt_create"
+				jdbcType="TIMESTAMP"
+			/>
+		<result property="toLicensePicture" 
+				column="to_license_picture"
+				jdbcType="VARCHAR"
+			/>
+		<result property="fromContactMobilePhone" 
+				column="from_contact_mobile_phone"
+				jdbcType="VARCHAR"
+			/>
+		<result property="toFullBodyPicture" 
+				column="to_full_body_picture"
+				jdbcType="VARCHAR"
+			/>
+	</resultMap>
+	<sql id="dynamic">
+		<trim prefix="where" prefixOverrides="and">
+		<if test="reason != null">
+			and reason = #{reason}
+		</if>
+		<if test="verifyUserNick != null">
+			and verify_user_nick = #{verifyUserNick}
+		</if>
+		<if test="fromProfilePicture != null">
+			and from_profile_picture = #{fromProfilePicture}
+		</if>
+		<if test="toHalfBodyPicture != null">
+			and to_half_body_picture = #{toHalfBodyPicture}
+		</if>
+		<if test="toShopName != null">
+			and to_shop_name = #{toShopName}
+		</if>
+		<if test="source != null">
+			and source = #{source}
+		</if>
+		<if test="fromAccountNick != null">
+			and from_account_nick = #{fromAccountNick}
+		</if>
+		<if test="fromContactPersonName != null">
+			and from_contact_person_name = #{fromContactPersonName}
+		</if>
+		<if test="relation != null">
+			and relation = #{relation}
+		</if>
+		<if test="fromFullBodyPicture != null">
+			and from_full_body_picture = #{fromFullBodyPicture}
+		</if>
+		<if test="fromHalfBodyPicture != null">
+			and from_half_body_picture = #{fromHalfBodyPicture}
+		</if>
+		<if test="toName != null">
+			and to_name = #{toName}
+		</if>
+		<if test="fromName != null">
+			and from_name = #{fromName}
+		</if>
+		<if test="fromLicensePicture != null">
+			and from_license_picture = #{fromLicensePicture}
+		</if>
+		<if test="toIdcardFrontPicture != null">
+			and to_idcard_front_picture = #{toIdcardFrontPicture}
+		</if>
+		<if test="toIdcardBackPicture != null">
+			and to_idcard_back_picture = #{toIdcardBackPicture}
+		</if>
+		<if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="state != null">
+			and state = #{state}
+		</if>
+		<if test="toIdcard != null">
+			and to_idcard = #{toIdcard}
+		</if>
+		<if test="toContactMobilePhone != null">
+			and to_contact_mobile_phone = #{toContactMobilePhone}
+		</if>
+		<if test="fromIdcardFrontPicture != null">
+			and from_idcard_front_picture = #{fromIdcardFrontPicture}
+		</if>
+		<if test="fromCompanyName != null">
+			and from_company_name = #{fromCompanyName}
+		</if>
+		<if test="toContactEmail != null">
+			and to_contact_email = #{toContactEmail}
+		</if>
+		<if test="gmtVerify != null">
+			and gmt_verify = #{gmtVerify}
+		</if>
+		<if test="toContactPersonName != null">
+			and to_contact_person_name = #{toContactPersonName}
+		</if>
+		<if test="fromShopName != null">
+			and from_shop_name = #{fromShopName}
+		</if>
+		<if test="fromAlipayAccountId != null">
+			and from_alipay_account_id = #{fromAlipayAccountId}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="gmtModified != null">
+			and gmt_modified = #{gmtModified}
+		</if>
+		<if test="toHavanaId != null">
+			and to_havana_id = #{toHavanaId}
+		</if>
+		<if test="toLicenseNumber != null">
+			and to_license_number = #{toLicenseNumber}
+		</if>
+		<if test="fromHavanaId != null">
+			and from_havana_id = #{fromHavanaId}
+		</if>
+		<if test="fromAccountType != null">
+			and from_account_type = #{fromAccountType}
+		</if>
+		<if test="fromIdcard != null">
+			and from_idcard = #{fromIdcard}
+		</if>
+		<if test="toCompanyName != null">
+			and to_company_name = #{toCompanyName}
+		</if>
+		<if test="fromAccountId != null">
+			and from_account_id = #{fromAccountId}
+		</if>
+		<if test="fromIdcardBackPicture != null">
+			and from_idcard_back_picture = #{fromIdcardBackPicture}
+		</if>
+		<if test="toProfilePicture != null">
+			and to_profile_picture = #{toProfilePicture}
+		</if>
+		<if test="toAccountNick != null">
+			and to_account_nick = #{toAccountNick}
+		</if>
+		<if test="toAlipayAccountId != null">
+			and to_alipay_account_id = #{toAlipayAccountId}
+		</if>
+		<if test="toAccountType != null">
+			and to_account_type = #{toAccountType}
+		</if>
+		<if test="fromLicenseNumber != null">
+			and from_license_number = #{fromLicenseNumber}
+		</if>
+		<if test="toAccountId != null">
+			and to_account_id = #{toAccountId}
+		</if>
+		<if test="fromContactEmail != null">
+			and from_contact_email = #{fromContactEmail}
+		</if>
+		<if test="gmtCreate != null">
+			and gmt_create = #{gmtCreate}
+		</if>
+		<if test="toLicensePicture != null">
+			and to_license_picture = #{toLicensePicture}
+		</if>
+		<if test="fromContactMobilePhone != null">
+			and from_contact_mobile_phone = #{fromContactMobilePhone}
+		</if>
+		<if test="toFullBodyPicture != null">
+			and to_full_body_picture = #{toFullBodyPicture}
+		</if>
+		</trim>
+	</sql>
+	<sql id="updateDynamic">
+		<trim prefix="set" prefixOverrides=",">
+		<if test="reason != null">
+			,reason=#{reason}
+		</if>
+		<if test="verifyUserNick != null">
+			,verify_user_nick=#{verifyUserNick}
+		</if>
+		<if test="fromProfilePicture != null">
+			,from_profile_picture=#{fromProfilePicture}
+		</if>
+		<if test="toHalfBodyPicture != null">
+			,to_half_body_picture=#{toHalfBodyPicture}
+		</if>
+		<if test="toShopName != null">
+			,to_shop_name=#{toShopName}
+		</if>
+		<if test="source != null">
+			,source=#{source}
+		</if>
+		<if test="fromAccountNick != null">
+			,from_account_nick=#{fromAccountNick}
+		</if>
+		<if test="fromContactPersonName != null">
+			,from_contact_person_name=#{fromContactPersonName}
+		</if>
+		<if test="relation != null">
+			,relation=#{relation}
+		</if>
+		<if test="fromFullBodyPicture != null">
+			,from_full_body_picture=#{fromFullBodyPicture}
+		</if>
+		<if test="fromHalfBodyPicture != null">
+			,from_half_body_picture=#{fromHalfBodyPicture}
+		</if>
+		<if test="toName != null">
+			,to_name=#{toName}
+		</if>
+		<if test="fromName != null">
+			,from_name=#{fromName}
+		</if>
+		<if test="fromLicensePicture != null">
+			,from_license_picture=#{fromLicensePicture}
+		</if>
+		<if test="toIdcardFrontPicture != null">
+			,to_idcard_front_picture=#{toIdcardFrontPicture}
+		</if>
+		<if test="toIdcardBackPicture != null">
+			,to_idcard_back_picture=#{toIdcardBackPicture}
+		</if>
+		<if test="id != null">
+			,id=#{id}
+		</if>
+		<if test="state != null">
+			,state=#{state}
+		</if>
+		<if test="toIdcard != null">
+			,to_idcard=#{toIdcard}
+		</if>
+		<if test="toContactMobilePhone != null">
+			,to_contact_mobile_phone=#{toContactMobilePhone}
+		</if>
+		<if test="fromIdcardFrontPicture != null">
+			,from_idcard_front_picture=#{fromIdcardFrontPicture}
+		</if>
+		<if test="fromCompanyName != null">
+			,from_company_name=#{fromCompanyName}
+		</if>
+		<if test="toContactEmail != null">
+			,to_contact_email=#{toContactEmail}
+		</if>
+		<if test="gmtVerify != null">
+			,gmt_verify=#{gmtVerify}
+		</if>
+		<if test="toContactPersonName != null">
+			,to_contact_person_name=#{toContactPersonName}
+		</if>
+		<if test="fromShopName != null">
+			,from_shop_name=#{fromShopName}
+		</if>
+		<if test="fromAlipayAccountId != null">
+			,from_alipay_account_id=#{fromAlipayAccountId}
+		</if>
+		<if test="status != null">
+			,status=#{status}
+		</if>
+		<if test="gmtModified != null">
+			,gmt_modified=CURRENT_TIMESTAMP()
+		</if>
+		<if test="toHavanaId != null">
+			,to_havana_id=#{toHavanaId}
+		</if>
+		<if test="toLicenseNumber != null">
+			,to_license_number=#{toLicenseNumber}
+		</if>
+		<if test="fromHavanaId != null">
+			,from_havana_id=#{fromHavanaId}
+		</if>
+		<if test="fromAccountType != null">
+			,from_account_type=#{fromAccountType}
+		</if>
+		<if test="fromIdcard != null">
+			,from_idcard=#{fromIdcard}
+		</if>
+		<if test="toCompanyName != null">
+			,to_company_name=#{toCompanyName}
+		</if>
+		<if test="fromAccountId != null">
+			,from_account_id=#{fromAccountId}
+		</if>
+		<if test="fromIdcardBackPicture != null">
+			,from_idcard_back_picture=#{fromIdcardBackPicture}
+		</if>
+		<if test="toProfilePicture != null">
+			,to_profile_picture=#{toProfilePicture}
+		</if>
+		<if test="toAccountNick != null">
+			,to_account_nick=#{toAccountNick}
+		</if>
+		<if test="toAlipayAccountId != null">
+			,to_alipay_account_id=#{toAlipayAccountId}
+		</if>
+		<if test="toAccountType != null">
+			,to_account_type=#{toAccountType}
+		</if>
+		<if test="fromLicenseNumber != null">
+			,from_license_number=#{fromLicenseNumber}
+		</if>
+		<if test="toAccountId != null">
+			,to_account_id=#{toAccountId}
+		</if>
+		<if test="fromContactEmail != null">
+			,from_contact_email=#{fromContactEmail}
+		</if>
+		<if test="gmtCreate != null">
+			,gmt_create=#{gmtCreate}
+		</if>
+		<if test="toLicensePicture != null">
+			,to_license_picture=#{toLicensePicture}
+		</if>
+		<if test="fromContactMobilePhone != null">
+			,from_contact_mobile_phone=#{fromContactMobilePhone}
+		</if>
+		<if test="toFullBodyPicture != null">
+			,to_full_body_picture=#{toFullBodyPicture}
+		</if>
+		</trim>
+	</sql>
+	<select id="select" parameterType="com.carpela.test.VerifyTransfer" resultMap="BaseResultMap">
+		select * from verify_transfer
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</select>
+	<insert id="insert" parameterType="com.carpela.test.VerifyTransfer">
+		insert into verify_transfer (reason,verify_user_nick,from_profile_picture,to_half_body_picture,to_shop_name,source,from_account_nick,from_contact_person_name,relation,from_full_body_picture,from_half_body_picture,to_name,from_name,from_license_picture,to_idcard_front_picture,to_idcard_back_picture,id,state,to_idcard,to_contact_mobile_phone,from_idcard_front_picture,from_company_name,to_contact_email,gmt_verify,to_contact_person_name,from_shop_name,from_alipay_account_id,status,gmt_modified,to_havana_id,to_license_number,from_havana_id,from_account_type,from_idcard,to_company_name,from_account_id,from_idcard_back_picture,to_profile_picture,to_account_nick,to_alipay_account_id,to_account_type,from_license_number,to_account_id,from_contact_email,gmt_create,to_license_picture,from_contact_mobile_phone,to_full_body_picture) 
+		values (
+			#{reason},
+			#{verifyUserNick},
+			#{fromProfilePicture},
+			#{toHalfBodyPicture},
+			#{toShopName},
+			#{source},
+			#{fromAccountNick},
+			#{fromContactPersonName},
+			#{relation},
+			#{fromFullBodyPicture},
+			#{fromHalfBodyPicture},
+			#{toName},
+			#{fromName},
+			#{fromLicensePicture},
+			#{toIdcardFrontPicture},
+			#{toIdcardBackPicture},
+			#{id},
+			#{state},
+			#{toIdcard},
+			#{toContactMobilePhone},
+			#{fromIdcardFrontPicture},
+			#{fromCompanyName},
+			#{toContactEmail},
+			#{gmtVerify},
+			#{toContactPersonName},
+			#{fromShopName},
+			#{fromAlipayAccountId},
+			#{status},
+			#{gmtModified},
+			#{toHavanaId},
+			#{toLicenseNumber},
+			#{fromHavanaId},
+			#{fromAccountType},
+			#{fromIdcard},
+			#{toCompanyName},
+			#{fromAccountId},
+			#{fromIdcardBackPicture},
+			#{toProfilePicture},
+			#{toAccountNick},
+			#{toAlipayAccountId},
+			#{toAccountType},
+			#{fromLicenseNumber},
+			#{toAccountId},
+			#{fromContactEmail},
+			CURRENT_TIMESTAMP(),
+			#{toLicensePicture},
+			#{fromContactMobilePhone},
+			#{toFullBodyPicture}
+		)
+	</insert>
+	<update id="update" parameterType="com.carpela.test.VerifyTransfer">
+		update verify_transfer set
+				reason=#{reason},
+				verify_user_nick=#{verifyUserNick},
+				from_profile_picture=#{fromProfilePicture},
+				to_half_body_picture=#{toHalfBodyPicture},
+				to_shop_name=#{toShopName},
+				source=#{source},
+				from_account_nick=#{fromAccountNick},
+				from_contact_person_name=#{fromContactPersonName},
+				relation=#{relation},
+				from_full_body_picture=#{fromFullBodyPicture},
+				from_half_body_picture=#{fromHalfBodyPicture},
+				to_name=#{toName},
+				from_name=#{fromName},
+				from_license_picture=#{fromLicensePicture},
+				to_idcard_front_picture=#{toIdcardFrontPicture},
+				to_idcard_back_picture=#{toIdcardBackPicture},
+				id=#{id},
+				state=#{state},
+				to_idcard=#{toIdcard},
+				to_contact_mobile_phone=#{toContactMobilePhone},
+				from_idcard_front_picture=#{fromIdcardFrontPicture},
+				from_company_name=#{fromCompanyName},
+				to_contact_email=#{toContactEmail},
+				gmt_verify=#{gmtVerify},
+				to_contact_person_name=#{toContactPersonName},
+				from_shop_name=#{fromShopName},
+				from_alipay_account_id=#{fromAlipayAccountId},
+				status=#{status},
+				gmt_modified=CURRENT_TIMESTAMP(),
+				to_havana_id=#{toHavanaId},
+				to_license_number=#{toLicenseNumber},
+				from_havana_id=#{fromHavanaId},
+				from_account_type=#{fromAccountType},
+				from_idcard=#{fromIdcard},
+				to_company_name=#{toCompanyName},
+				from_account_id=#{fromAccountId},
+				from_idcard_back_picture=#{fromIdcardBackPicture},
+				to_profile_picture=#{toProfilePicture},
+				to_account_nick=#{toAccountNick},
+				to_alipay_account_id=#{toAlipayAccountId},
+				to_account_type=#{toAccountType},
+				from_license_number=#{fromLicenseNumber},
+				to_account_id=#{toAccountId},
+				from_contact_email=#{fromContactEmail},
+				gmt_create=#{gmtCreate},
+				to_license_picture=#{toLicensePicture},
+				from_contact_mobile_phone=#{fromContactMobilePhone},
+				to_full_body_picture=#{toFullBodyPicture}
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</update>
+	<delete id="delete" parameterType="com.carpela.test.VerifyTransfer">
+		delete from verify_transfer
+		<if test="_parameter != null" >
+			<include refid="dynamic"/>
+		</if>
+	</delete>
+	<update id="updateById" parameterType="com.carpela.test.VerifyTransfer">
+		update verify_transfer 
+			<include refid="updateDynamic"/>
+		where
+			id=#{id}
+	</update>
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from verify_transfer
+		where id=#{id}
+	</delete>
+</mapper>
